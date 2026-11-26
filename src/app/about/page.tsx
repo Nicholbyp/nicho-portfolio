@@ -1,3 +1,4 @@
+
 import {
   Avatar,
   Button,
@@ -25,7 +26,7 @@ export async function generateMetadata() {
     image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
     path: about.path,
   });
-  // Meta.generate writes a canonical only alongside language alternates.
+
   return { ...metadata, alternates: { canonical: metadata.openGraph.url } };
 }
 
@@ -52,6 +53,7 @@ export default function About() {
       items: about.technical.skills.map((skill) => skill.title),
     },
   ];
+
   return (
     <Column maxWidth="m">
       <Schema
@@ -67,6 +69,7 @@ export default function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+
       {about.tableOfContent.display && (
         <Column
           left="0"
@@ -79,6 +82,7 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
+
       <Row fillWidth s={{ direction: "column" }} horizontal="center">
         {about.avatar.display && (
           <Column
@@ -96,10 +100,12 @@ export default function About() {
             horizontal="center"
           >
             <Avatar src={person.avatar} size="xl" aria-label={person.name} />
+
             <Row gap="8" vertical="center">
-  <Icon onBackground="accent-weak" name="home" />
-  Sukoharjo, Indonesia
-</Row>
+              <Icon onBackground="accent-weak" name="home" />
+              Sukoharjo, Indonesia
+            </Row>
+
             {person.languages && person.languages.length > 0 && (
               <Row wrap gap="8">
                 {person.languages.map((language, index) => (
@@ -111,6 +117,7 @@ export default function About() {
             )}
           </Column>
         )}
+
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>
           <Column
             id={about.intro.title}
@@ -145,9 +152,11 @@ export default function About() {
                 />
               </Row>
             )}
+
             <Heading className={styles.textAlign} variant="display-strong-xl">
               {person.name}
             </Heading>
+
             <Text
               className={styles.textAlign}
               variant="display-default-xs"
@@ -155,49 +164,60 @@ export default function About() {
             >
               {person.role}
             </Text>
-            {social.length > 0 && (
-              <Row
-                className={styles.blockAlign}
-                paddingTop="20"
-                paddingBottom="8"
-                gap="8"
-                wrap
-                horizontal="center"
-                fitWidth
-                data-border="rounded"
-              >
-                {social
-                  .filter((item) => item.essential)
-                  .map(
-                    (item) =>
-                      item.link && (
-                        <React.Fragment key={item.name}>
-                          <Row s={{ hide: true }}>
-                            <Button
-                              key={item.name}
-                              href={item.link}
-                              prefixIcon={item.icon}
-                              label={item.name}
-                              size="s"
-                              weight="default"
-                              variant="secondary"
-                            />
-                          </Row>
-                          <Row hide s={{ hide: false }}>
-                            <IconButton
-                              size="l"
-                              key={`${item.name}-icon`}
-                              href={item.link}
-                              icon={item.icon}
-                              variant="secondary"
-                              aria-label={item.name}
-                            />
-                          </Row>
-                        </React.Fragment>
-                      ),
-                  )}
+
+            
+{social.length > 0 && (
+  <Row
+    className={styles.blockAlign}
+    paddingTop="20"
+    paddingBottom="8"
+    gap="8"
+    wrap
+    horizontal="center"
+    fitWidth
+    data-border="rounded"
+  >
+    {social
+      .filter((item) => item.essential)
+      .map(
+        (item) =>
+          item.link && (
+            <React.Fragment key={item.name}>
+              <Row s={{ hide: true }}>
+                <Button
+                  href={item.link}
+                  prefixIcon={item.icon}
+                  label={item.name}
+                  size="s"
+                  weight="default"
+                  variant="secondary"
+                />
               </Row>
-            )}
+
+              <Row hide s={{ hide: false }}>
+                <IconButton
+                  size="l"
+                  href={item.link}
+                  icon={item.icon}
+                  variant="secondary"
+                  aria-label={item.name}
+                />
+              </Row>
+            </React.Fragment>
+          ),
+      )}
+
+    <Button
+  href="/cv.pdf"
+  label="Download CV"
+  size="s"
+  weight="default"
+  variant="secondary"
+  style={{ transform: "translateY(5px)" }}
+/>
+    </Row>
+)}
+
           </Column>
 
           {about.intro.display && (
@@ -206,11 +226,18 @@ export default function About() {
             </Column>
           )}
 
+          {/* WORK EXPERIENCE */}
           {about.work.display && (
             <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
+              <Heading
+                as="h2"
+                id={about.work.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
                 {about.work.title}
               </Heading>
+
               <Column fillWidth gap="l" marginBottom="40">
                 {about.work.experiences.map((experience, index) => (
                   <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
@@ -218,13 +245,16 @@ export default function About() {
                       <Text id={experience.company} variant="heading-strong-l">
                         {experience.company}
                       </Text>
+
                       <Text variant="heading-default-xs" onBackground="neutral-weak">
                         {experience.timeframe}
                       </Text>
                     </Row>
+
                     <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
                       {experience.role}
                     </Text>
+
                     <Column as="ul" gap="16">
                       {experience.achievements.map(
                         (achievement: React.ReactNode, index: number) => (
@@ -238,6 +268,7 @@ export default function About() {
                         ),
                       )}
                     </Column>
+
                     {experience.images && experience.images.length > 0 && (
                       <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
@@ -265,17 +296,25 @@ export default function About() {
             </>
           )}
 
+          {/* EDUCATION */}
           {about.studies.display && (
             <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
+              <Heading
+                as="h2"
+                id={about.studies.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
                 {about.studies.title}
               </Heading>
+
               <Column fillWidth gap="l" marginBottom="40">
                 {about.studies.institutions.map((institution, index) => (
                   <Column key={`${institution.name}-${index}`} fillWidth gap="4">
                     <Text id={institution.name} variant="heading-strong-l">
                       {institution.name}
                     </Text>
+
                     <Text variant="heading-default-xs" onBackground="neutral-weak">
                       {institution.description}
                     </Text>
@@ -285,6 +324,7 @@ export default function About() {
             </>
           )}
 
+          {/* TECHNICAL SKILLS */}
           {about.technical.display && (
             <>
               <Heading
@@ -295,51 +335,98 @@ export default function About() {
               >
                 {about.technical.title}
               </Heading>
+
               <Column fillWidth gap="l">
                 {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                  <Column key={`${skill.title}-${index}`} fillWidth gap="4">
                     <Text id={skill.title} variant="heading-strong-l">
                       {skill.title}
                     </Text>
+
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
+
                     {skill.tags && skill.tags.length > 0 && (
                       <Row wrap gap="8" paddingTop="8">
                         {skill.tags.map((tag, tagIndex) => (
-                          <Tag key={`${skill.title}-${tagIndex}`} size="l" prefixIcon={tag.icon}>
+                          <Tag
+                            key={`${skill.title}-${tagIndex}`}
+                            size="l"
+                            prefixIcon={tag.icon}
+                          >
                             {tag.name}
                           </Tag>
                         ))}
                       </Row>
                     )}
+
                     {skill.images && skill.images.length > 0 && (
-  <Row fillWidth paddingTop="m" gap="12" wrap>
-    {skill.images.map((image, index) => (
-      <Row
-        key={index}
-        border="neutral-medium"
-        radius="m"
-        width={240}
-        aspectRatio="16 / 9"
-        overflow="hidden"
-      >
-        <Media
-          enlarge
-          radius="m"
-          sizes="240px"
-          alt={image.alt}
-          src={image.src}
-        />
-      </Row>
-    ))}
-  </Row>
-)}
+                      <Row fillWidth paddingTop="m" gap="12" wrap>
+                        {skill.images.map((image, index) => (
+                          <Row
+                            key={index}
+                            border="neutral-medium"
+                            radius="m"
+                            width={240}
+                            aspectRatio="16 / 9"
+                            overflow="hidden"
+                          >
+                            <Media
+                              enlarge
+                              radius="m"
+                              sizes="240px"
+                              alt={image.alt}
+                              src={image.src}
+                            />
+                          </Row>
+                        ))}
+                      </Row>
+                    )}
                   </Column>
                 ))}
               </Column>
             </>
           )}
+
+          {/* SOFT SKILLS */}
+          <Column fillWidth gap="m" marginTop="40">
+            <Heading
+              as="h2"
+              id="Soft Skills"
+              variant="display-strong-s"
+              marginBottom="m"
+            >
+              Soft Skills
+            </Heading>
+
+            <Text variant="body-default-m" onBackground="neutral-weak">
+              Komunikasi interpersonal, pelayanan pelanggan, kerja sama tim,
+              pemecahan masalah, ketelitian, manajemen waktu, adaptasi,
+              kreativitas, inisiatif, tanggung jawab, serta kemampuan bekerja
+              secara sistematis dan sesuai prosedur.
+            </Text>
+          </Column>
+
+          {/* HARD SKILLS */}
+          <Column fillWidth gap="m" marginTop="32" marginBottom="40">
+            <Heading
+              as="h2"
+              id="Hard Skills"
+              variant="display-strong-s"
+              marginBottom="m"
+            >
+              Hard Skills
+            </Heading>
+
+            <Text variant="body-default-m" onBackground="neutral-weak">
+              Menguasai Microsoft Office (Word, Excel dan PowerPoint), Internet of Things
+              (ESP32 dan Arduino), Firebase, pemrograman web (HTML, CSS,
+              JavaScript), UI/UX dasar, troubleshooting hardware dan software,
+              basic networking, pengolahan data, serta editing desain dan video
+              menggunakan Canva dan CapCut.
+            </Text>
+          </Column>
         </Column>
       </Row>
     </Column>

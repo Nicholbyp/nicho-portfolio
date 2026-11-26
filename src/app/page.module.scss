@@ -112,7 +112,7 @@
     transparent 100%
   );
 
-  animation: portraitRise 1.3s
+  animation: portraitRise 2.8s
     cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -213,6 +213,7 @@
   .portraitImage {
     max-width: 100%;
     animation-duration: 1.1s;
+    margin-top: -35px;
   }
 
   .introduction {

@@ -79,7 +79,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Introduction */}
+        {/* INTRODUCTION */}
         <div className={styles.introduction}>
           <h1>Hi, I'm Nicho.</h1>
 
@@ -96,16 +96,40 @@ export default function Home() {
             onBackground="neutral-weak"
             wrap="balance"
           >
-            An Informatics Engineering graduate who enjoys exploring technology, solving problems, assisting people, and creating positive service experiences. Interested in IT support, customer service, hospitality, and digital operations. Always curious, always learning.
+            An Informatics Engineering graduate who enjoys exploring technology,
+            solving problems, assisting people, and creating positive service
+            experiences. Interested in IT support, customer service, hospitality,
+            and digital operations. Always curious, always learning.
           </Text>
-          <Button
-  href="/about"
-  variant="secondary"
-  size="m"
-  suffixIcon="arrowUpRight"
->
-  Explore About
-</Button>
+
+          {/* ACTION BUTTONS */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "12px",
+              marginTop: "8px",
+            }}
+          >
+            <Button
+              href="/about"
+              variant="secondary"
+              size="m"
+              suffixIcon="arrowUpRight"
+            >
+              Explore About
+            </Button>
+
+            <Button
+              href="/cv.pdf"
+              variant="primary"
+              size="m"
+              prefixIcon="download"
+            >
+              Download CV
+            </Button>
+          </div>
         </div>
 
         <div className={styles.scrollHint}>
