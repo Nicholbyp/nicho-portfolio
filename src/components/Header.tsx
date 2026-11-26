@@ -5,7 +5,7 @@ import { Fragment, useEffect, useState } from "react";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, person, about, work, certificates } from "@/resources";
 import type { IconName } from "@/resources/icons";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
@@ -48,8 +48,7 @@ export default TimeDisplay;
 const navItems: { href: keyof typeof routes; icon: IconName; label: string }[] = [
   { href: "/about", icon: "person", label: about.label },
   { href: "/work", icon: "grid", label: work.label },
-  { href: "/blog", icon: "book", label: blog.label },
-  { href: "/gallery", icon: "gallery", label: gallery.label },
+  { href: "/certificates", icon: "grid", label: certificates.label },
 ];
 
 export const Header = () => {

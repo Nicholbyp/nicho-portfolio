@@ -1,0 +1,61 @@
+---
+title: "Indonesian Rupiah Banknote Classification Using MobileNetV2"
+publishedAt: "2025-01-01"
+summary: "A group project developing an image classification model using MobileNetV2 Transfer Learning to recognize seven Indonesian rupiah banknote denominations."
+images:
+  - "/images/projects/mobilenetv2/1000.png"
+  - "/images/projects/mobilenetv2/demo-interface.png"
+  - "/images/projects/mobilenetv2/training-results.png"
+---
+
+## Overview
+
+This project was developed as part of a Digital Image Processing course. The goal was to build an image classification system capable of recognizing seven Indonesian rupiah banknote denominations using MobileNetV2.
+
+The application uses a deep learning model to analyze uploaded banknote images and display the predicted denomination along with prediction probabilities.
+
+## Project Details
+
+- Project Type: Academic Group Project
+- Model: MobileNetV2
+- Method: Transfer Learning
+- Input Image Size: 224 × 224 × 3
+- Number of Classes: 7
+- Total Dataset: 4,753 images
+
+## My Contributions
+
+Worked as part of a six-member project team to develop and test an Indonesian rupiah banknote classification system.
+
+## Model Architecture
+
+- MobileNetV2 pretrained on ImageNet
+- GlobalAveragePooling2D
+- Dropout
+- Dense layer with 7 output classes
+- Softmax activation
+
+## Training and Evaluation
+
+The model was trained for 20 epochs using the Adam optimizer and categorical cross-entropy loss.
+
+The presentation reports:
+- Training Accuracy: 64.09%
+- Validation Accuracy in training summary: 78.27%
+- Validation Accuracy in evaluation section: 74.47%
+
+## Technologies
+
+- Python
+- TensorFlow 2.19.0
+- Keras
+- MobileNetV2
+- Google Colab
+- Gradio
+- NumPy
+- Matplotlib
+- Scikit-learn
+
+## Outcome
+
+The project produced a prototype image classification application that could predict Indonesian rupiah banknote denominations and display prediction probabilities through a Gradio interface.

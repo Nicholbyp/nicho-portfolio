@@ -314,26 +314,27 @@ export default function About() {
                       </Row>
                     )}
                     {skill.images && skill.images.length > 0 && (
-                      <Row fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Row
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Row>
-                        ))}
-                      </Row>
-                    )}
+  <Row fillWidth paddingTop="m" gap="12" wrap>
+    {skill.images.map((image, index) => (
+      <Row
+        key={index}
+        border="neutral-medium"
+        radius="m"
+        width={240}
+        aspectRatio="16 / 9"
+        overflow="hidden"
+      >
+        <Media
+          enlarge
+          radius="m"
+          sizes="240px"
+          alt={image.alt}
+          src={image.src}
+        />
+      </Row>
+    ))}
+  </Row>
+)}
                   </Column>
                 ))}
               </Column>

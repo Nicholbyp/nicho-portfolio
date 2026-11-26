@@ -13,8 +13,15 @@ const person: Person = {
   locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
 };
 
+const certificates = {
+  path: "/certificates",
+  label: "Certificates",
+  title: `Certificates – ${person.name}`,
+  description: `Professional certifications and achievements by ${person.name}`,
+};
+
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
@@ -26,7 +33,7 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/nicholl777",
+    link: "https://github.com/Nicholbyp",
     essential: true,
   },
   {
@@ -60,28 +67,20 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  description: `Portfolio of ${person.name} - IT Support, Customer Service, and Digital Operations`,
+  headline: <>Technology, Support & Digital Solutions</>,
   featured: {
-    display: true,
-    title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          Featured work
-        </Text>
-      </Row>
-    ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    display: false,
+    title: <>Selected Projects</>,
+    href: "/work",
   },
   subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">
-        ONCE UI
-      </Text>
-      , where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      I'm {person.firstName} {person.lastName}, an Informatics Engineering
+      graduate based in Sukoharjo, Central Java, Indonesia.
+      With experience in IT support, customer service, and digital operations,
+      I enjoy solving problems, helping people, and using technology
+      to create practical solutions.
     </>
   ),
 };
@@ -90,7 +89,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, an Informatics Engineering graduate based in Sukoharjo, Central Java, Indonesia.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -287,13 +286,43 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/project-01/resto.jpeg",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/project-01/pukis1.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/cspdam.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/wapdam.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/aduan.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/sd.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/mic.jpeg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -326,7 +355,19 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/project-01/lan.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+            },
+            {
+            src: "/images/projects/project-01/menek.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+            },
+             {
+            src: "/images/projects/project-01/krgg.jpeg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -429,20 +470,20 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/nexlimv.png",
+            src: "/images/projects/project-01/nichvap.png",
             alt: "Project Web Penjualan vape Menggunakan Next,Js",
             width: 16,
             height: 9,
             },
              {
-            src: "/images/projects/project-01/webdesa.jpeg",
+            src: "/images/projects/project-01/webkkn.png",
             alt: "Project Web Desa untuk KKN menggunakan Next.Js",
             width: 16,
             height: 9,
             },
              {
-            src: "/images/projects/project-01/webdesa2.jpeg",
-            alt: "Tampilan Dashboard Web Desa untuk KKN menggunakan Next.Js",
+            src: "/images/projects/project-01/webkkn1.png",
+            alt: "Tampilan Web Desa untuk KKN menggunakan Next.Js",
             width: 16,
             height: 9,
             },
@@ -455,6 +496,12 @@ const about: About = {
              {
             src: "/images/projects/project-01/mancink.png",
             alt: "Project Web Game Mancing",
+            width: 16,
+            height: 9,
+            }, 
+             {
+            src: "/images/projects/project-01/porto.png",
+            alt: "Project Web Portofolio Menggunakan Next.Js",
             width: 16,
             height: 9,
             }, 
@@ -477,15 +524,29 @@ const about: About = {
             name: "Figma",
             icon: "figma",
              },
-        {
-          name: "Chart.js",
-          icon: "grid",
-          },
         ],
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/pddkkn.png",
+            src: "/images/projects/project-01/faster.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+            },
+            {
+            src: "/images/projects/project-01/umkm.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+            },
+             {
+            src: "/images/projects/project-01/canva.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+            },
+             {
+            src: "/images/projects/project-01/poster.png",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -517,7 +578,13 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/project-01/kos.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+           {
+            src: "/images/projects/project-01/kembangk.png",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -596,4 +663,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, gallery, certificates };
