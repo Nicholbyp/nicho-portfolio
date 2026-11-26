@@ -1,18 +1,17 @@
+
+import Image from "next/image";
+
 import {
-  Heading,
-  Text,
-  Button,
-  Avatar,
-  RevealFx,
   Column,
-  Badge,
-  Row,
+  Text,
   Schema,
   Meta,
+  Button,
 } from "@once-ui-system/core";
 
 import { home, about, person, baseURL } from "@/resources";
 import { Projects } from "@/components/work/Projects";
+import styles from "./page.module.scss";
 
 export async function generateMetadata() {
   const metadata = Meta.generate({
@@ -22,13 +21,16 @@ export async function generateMetadata() {
     path: home.path,
     image: home.image,
   });
-  // Meta.generate writes a canonical only alongside language alternates.
-  return { ...metadata, alternates: { canonical: metadata.openGraph.url } };
+
+  return {
+    ...metadata,
+    alternates: { canonical: metadata.openGraph.url },
+  };
 }
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column maxWidth="xl" gap="xl" paddingY="24" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -42,71 +44,80 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth horizontal="center" gap="m">
-        <Column maxWidth="s" horizontal="center" align="center">
-          {home.featured.display && (
-            <RevealFx
-              fillWidth
-              horizontal="center"
-              paddingTop="16"
-              paddingBottom="32"
-              paddingLeft="12"
-            >
-              <Badge
-                background="brand-alpha-weak"
-                paddingX="12"
-                paddingY="4"
-                onBackground="neutral-strong"
-                textVariant="label-default-s"
-                arrow={false}
-                href={home.featured.href}
-              >
-                <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
-            </RevealFx>
-          )}
-          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
-            </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={200} fillWidth horizontal="center" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
-          </RevealFx>
-          <RevealFx paddingTop="12" delay={400} horizontal="center" paddingLeft="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Row gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                    aria-hidden
-                  />
-                )}
-                {about.title}
-              </Row>
-            </Button>
-          </RevealFx>
-        </Column>
-      </Column>
-      <RevealFx translateY="16" delay={600}>
+
+      {/* HERO SECTION */}
+      <section className={styles.hero}>
+        <div className={styles.welcome}>
+          WELCOME TO MY PORTFOLIO
+        </div>
+
+        <div className={styles.portraitArea}>
+          {/* Moving name behind portrait */}
+          <div className={styles.marquee} aria-hidden="true">
+            <div className={styles.marqueeTrack}>
+              <div className={styles.marqueeGroup}>
+                <span>NICHO BAYU PRADITYA — </span>
+                <span>NICHO BAYU PRADITYA — </span>
+              </div>
+              <div className={styles.marqueeGroup}>
+                <span>NICHO BAYU PRADITYA — </span>
+                <span>NICHO BAYU PRADITYA — </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Graduation portrait */}
+          <div className={styles.portrait}>
+            <Image
+              src="/images/fotoku.png"
+              alt="Nicho Bayu Praditya graduation portrait"
+              width={900}
+              height={1100}
+              priority
+              className={styles.portraitImage}
+            />
+          </div>
+        </div>
+
+        {/* Introduction */}
+        <div className={styles.introduction}>
+          <h1>Hi, I'm Nicho.</h1>
+
+          <div className={styles.roles}>
+            <span>CUSTOMER SERVICE</span>
+            <span className={styles.dot}>·</span>
+            <span>IT SUPPORT</span>
+            <span className={styles.dot}>·</span>
+            <span>DIGITAL OPERATIONS</span>
+          </div>
+
+          <Text
+            variant="body-default-m"
+            onBackground="neutral-weak"
+            wrap="balance"
+          >
+            An Informatics Engineering graduate who enjoys exploring technology, solving problems, assisting people, and creating positive service experiences. Interested in IT support, customer service, hospitality, and digital operations. Always curious, always learning.
+          </Text>
+          <Button
+  href="/about"
+  variant="secondary"
+  size="m"
+  suffixIcon="arrowUpRight"
+>
+  Explore About
+</Button>
+        </div>
+
+        <div className={styles.scrollHint}>
+          SCROLL TO EXPLORE ↓
+        </div>
+      </section>
+
+      {/* PROJECTS */}
+      <Column fillWidth gap="xl">
         <Projects range={[1, 1]} />
-      </RevealFx>
-      {}
-      <Projects range={[2]} />
-    
+        <Projects range={[2]} />
+      </Column>
     </Column>
   );
 }
