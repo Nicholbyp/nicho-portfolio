@@ -1,3 +1,4 @@
+
 import {
   Column,
   Heading,
@@ -13,10 +14,23 @@ import { baseURL, person } from "@/resources";
 const certificates = [
   {
     title: "Junior Web Programmer",
-    issuer: "Professional Certification",
+    issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
     date: "3 June 2026 - 3 June 2029",
     category: "Professional Certification",
     image: "/images/certificates/jwp.jpeg",
+  },
+  {
+    title: "Certificate of Achievement – TOEFL Prediction Test",
+    issuer: "Central Course",
+    date: "28 November 2026",
+    category: "Language",
+  },
+  {
+    title: "English Proficiency Test (EPT)",
+    issuer: "English Proficiency Test",
+    date: "30 September 2026",
+    category: "Language",
+    image: "/images/certificates/ept.jpeg",
   },
   {
     title: "Computer and Network Engineering Competency Test",
@@ -25,14 +39,6 @@ const certificates = [
     category: "Technical Competency",
     image: "/images/certificates/tkj.jpeg",
   },
-  {
-    title: "English Proficiency Test",
-    issuer: "English Proficiency Test",
-    date: "Please update",
-    category: "Language",
-    image: "/images/certificates/ept.jpeg",
-  },
-
   {
     title: "Secure The Future: Strategic Keamanan di Era Inovasi Digital",
     issuer: "Seminar Nasional - Universitas Duta Bangsa",
@@ -43,7 +49,7 @@ const certificates = [
   {
     title: "Seminar Nasional Teknologi Informasi dan Bisnis (SENATIB)",
     issuer: "Universitas Duta Bangsa",
-    date: "2025",
+    date: "26 July 2025",
     category: "Seminar",
     image: "/images/certificates/senatib.jpeg",
   },
@@ -104,8 +110,8 @@ export default function Certificates() {
       </Column>
 
       <Column fillWidth gap="32">
-        {certificates.map((certificate, index) => (
-          <Column key={index} fillWidth gap="m">
+        {certificates.map((certificate) => (
+          <Column key={certificate.title} fillWidth gap="m">
             <Row fillWidth horizontal="between" vertical="center">
               <Column flex={1} gap="4">
                 <Heading as="h2" variant="heading-strong-l">
@@ -118,20 +124,22 @@ export default function Certificates() {
               <Tag>{certificate.category}</Tag>
             </Row>
 
-            <Row
-              fillWidth
-              border="neutral-medium"
-              radius="m"
-              overflow="hidden"
-            >
-              <Media
-                src={certificate.image}
-                alt={`${certificate.title} certificate`}
-                aspectRatio="1,45 / 1"
-                width="100%"
-                enlarge
-              />
-            </Row>
+            {certificate.image && (
+              <Row
+                fillWidth
+                border="neutral-medium"
+                radius="m"
+                overflow="hidden"
+              >
+                <Media
+                  src={certificate.image}
+                  alt={`${certificate.title} certificate`}
+                  aspectRatio="1,45 / 1"
+                  width="100%"
+                  enlarge
+                />
+              </Row>
+            )}
           </Column>
         ))}
       </Column>

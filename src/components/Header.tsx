@@ -1,4 +1,3 @@
-
 "use client";
 
 import { usePathname } from "next/navigation";
@@ -128,13 +127,17 @@ export const Header = () => {
               {navItems.map(
                 (item) =>
                   routes[item.href] && (
-                    <ToggleButton
+                    <span
                       key={item.href}
-                      prefixIcon={item.icon}
-                      href={item.href}
-                      label={item.label}
-                      selected={pathname.startsWith(item.href)}
-                    />
+                      className={styles.mobileTextOnly}
+                    >
+                      <ToggleButton
+                        prefixIcon={item.icon}
+                        href={item.href}
+                        label={item.label}
+                        selected={pathname.startsWith(item.href)}
+                      />
+                    </span>
                   ),
               )}
 
